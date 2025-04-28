@@ -32,6 +32,21 @@
             appearance: none; /* Remove default dropdown arrow */
             -webkit-appearance: none;
             -moz-appearance: none;
+            position: relative; /* Needed for date picker icon positioning */
+        }
+        /* Allow default appearance for date inputs */
+        input[type="date"].styled-input {
+             appearance: auto;
+             -webkit-appearance: auto;
+             -moz-appearance: auto;
+        }
+        /* Specific style for radio buttons */
+        .styled-radio {
+             appearance: auto; /* Restore default appearance for radio */
+             -webkit-appearance: auto;
+             -moz-appearance: auto;
+             margin-right: 0.5rem; /* Add some space */
+             accent-color: #4f46e5; /* Indigo color for radio button */
         }
         .styled-input:focus {
             outline: none;
@@ -64,6 +79,15 @@
         }
         .no-print {
              /* Styles for screen */
+        }
+        /* Style for section headings */
+        .section-heading {
+            font-size: 1.25rem; /* text-xl */
+            font-weight: 700; /* font-bold */
+            color: #374151; /* text-gray-700 */
+            margin-bottom: 1rem; /* mb-4 */
+            padding-bottom: 0.5rem; /* pb-2 */
+            border-bottom: 2px solid rgba(101, 91, 214, 0.3); /* Border similar to focus color */
         }
 
     </style>
@@ -132,6 +156,32 @@
 
             <div class="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0">
                 <div class="space-y-2 sm:w-1/2">
+                    <label for="session-date" class="block text-lg font-semibold text-gray-700">
+                        Date:
+                    </label>
+                    <input
+                        type="date"
+                        id="session-date"
+                        name="session-date"
+                        class="w-full p-3 rounded-lg styled-input text-gray-700 bg-white" /* Added bg-white */
+                    />
+                </div>
+                <div class="space-y-2 sm:w-1/2">
+                    <label for="tutor-name" class="block text-lg font-semibold text-gray-700">
+                        Tutor Name:
+                    </label>
+                    <input
+                        type="text"
+                        id="tutor-name"
+                        name="tutor-name"
+                        placeholder="Enter tutor's name..."
+                        class="w-full p-3 rounded-lg styled-input text-gray-700"
+                    />
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0">
+                <div class="space-y-2 sm:w-1/2">
                     <label for="current-score" class="block text-lg font-semibold text-gray-700">
                         Current Score:
                     </label>
@@ -157,59 +207,197 @@
                 </div>
             </div>
 
-            <div class="space-y-2">
-                <label for="growth-areas" class="block text-lg font-semibold text-gray-700">
-                    Specific Growth Areas:
-                </label>
-                <textarea
-                    id="growth-areas"
-                    name="growth-areas"
-                    rows="4"
-                    placeholder="Identify areas needing focus within the selected section..."
-                    class="w-full p-3 rounded-lg styled-input text-gray-700 resize-none"
-                ></textarea>
-            </div>
-
-            <div class="space-y-2">
-                <label for="logic-understanding" class="block text-lg font-semibold text-gray-700">
-                    Understanding Logic For:
-                </label>
-                <textarea
-                    id="logic-understanding"
-                    name="logic-understanding"
-                    rows="4"
-                    placeholder="Detail specific logic types or question formats to deepen understanding..."
-                    class="w-full p-3 rounded-lg styled-input text-gray-700 resize-none"
-                ></textarea>
-            </div>
-
-            <div class="space-y-2">
-                <label for="plan-forward" class="block text-lg font-semibold text-gray-700">
-                    Plan Moving Forwards:
-                </label>
-                <textarea
-                    id="plan-forward"
-                    name="plan-forward"
-                    rows="5"
-                    placeholder="Outline concrete steps, practice drills, resources, and timelines..."
-                    class="w-full p-3 rounded-lg styled-input text-gray-700 resize-none"
-                ></textarea>
-            </div>
-
-            <div class="space-y-2">
-                <label for="success-definition" class="block text-lg font-semibold text-gray-700">
-                    What Success Looks Like:
-                </label>
-                <textarea
-                    id="success-definition"
-                    name="success-definition"
-                    rows="3"
-                    placeholder="Define the target score, performance characteristics, and overall feeling of mastery..."
-                    class="w-full p-3 rounded-lg styled-input text-gray-700 resize-none"
-                ></textarea>
-            </div>
-
-        </div> </div> <script>
+            <div class="space-y-6">
+                <h2 class="section-heading">2. Problem Identification & Analysis</h2>
+                <div class="space-y-2">
+                    <label for="defining-challenge" class="block text-lg font-semibold text-gray-700">
+                        Defining the Challenge:
+                    </label>
+                    <textarea
+                        id="defining-challenge"
+                        name="defining-challenge"
+                        rows="3"
+                        placeholder="Student describes the issue in their own words..."
+                        class="w-full p-3 rounded-lg styled-input text-gray-700 resize-none"
+                    ></textarea>
+                </div>
+                <div class="space-y-2">
+                    <label for="evidence-gathering" class="block text-lg font-semibold text-gray-700">
+                        Evidence Gathering:
+                    </label>
+                    <textarea
+                        id="evidence-gathering"
+                        name="evidence-gathering"
+                        rows="4"
+                        placeholder="Review practice results, mock scores, timing data. Tutor's probing questions..."
+                        class="w-full p-3 rounded-lg styled-input text-gray-700 resize-none"
+                    ></textarea>
+                </div>
+                <div class="space-y-2">
+                    <label for="root-causes" class="block text-lg font-semibold text-gray-700">
+                        Hypothesising Root Causes:
+                    </label>
+                    <textarea
+                        id="root-causes"
+                        name="root-causes"
+                        rows="4"
+                        placeholder="Brainstorm potential reasons: knowledge gap, technique, timing, anxiety..."
+                        class="w-full p-3 rounded-lg styled-input text-gray-700 resize-none"
+                    ></textarea>
+                </div>
+                <div class="space-y-2">
+                    <label for="core-problem" class="block text-lg font-semibold text-gray-700">
+                        Prioritising the Core Problem:
+                    </label>
+                    <textarea
+                        id="core-problem"
+                        name="core-problem"
+                        rows="3"
+                        placeholder="Identify the most significant root cause(s) to tackle..."
+                        class="w-full p-3 rounded-lg styled-input text-gray-700 resize-none"
+                    ></textarea>
+                </div>
+            </div> <div class="space-y-6">
+                <h2 class="section-heading">3. Solution Development & Strategy Implementation</h2>
+                <div class="space-y-2">
+                    <label for="brainstorming-solutions" class="block text-lg font-semibold text-gray-700">
+                        Brainstorming Potential Solutions/Strategies:
+                    </label>
+                    <textarea
+                        id="brainstorming-solutions"
+                        name="brainstorming-solutions"
+                        rows="4"
+                        placeholder="List possible approaches, techniques, drills..."
+                        class="w-full p-3 rounded-lg styled-input text-gray-700 resize-none"
+                    ></textarea>
+                </div>
+                 <div class="space-y-2">
+                    <label for="guided-practice" class="block text-lg font-semibold text-gray-700">
+                        Guided Practice & Application:
+                    </label>
+                    <textarea
+                        id="guided-practice"
+                        name="guided-practice"
+                        rows="4"
+                        placeholder="Work through examples together. Tutor feedback. Observations & Adjustments..."
+                        class="w-full p-3 rounded-lg styled-input text-gray-700 resize-none"
+                    ></textarea>
+                </div>
+                <div class="space-y-2">
+                    <label for="technique-summary" class="block text-lg font-semibold text-gray-700">
+                        Key Technique Summary:
+                    </label>
+                    <textarea
+                        id="technique-summary"
+                        name="technique-summary"
+                        rows="4"
+                        placeholder="Summarise the core steps of the strategy memorably..."
+                        class="w-full p-3 rounded-lg styled-input text-gray-700 resize-none"
+                    ></textarea>
+                </div>
+            </div> <div class="space-y-6">
+                <h2 class="section-heading">4. Action Plan & Next Steps</h2>
+                <div class="space-y-2">
+                    <label for="key-takeaways" class="block text-lg font-semibold text-gray-700">
+                         Key Takeaways from Today's Session:
+                    </label>
+                    <textarea
+                        id="key-takeaways"
+                        name="key-takeaways"
+                        rows="3"
+                        placeholder="Student summarises 2-3 main learning points..."
+                        class="w-full p-3 rounded-lg styled-input text-gray-700 resize-none"
+                    ></textarea>
+                </div>
+                <div class="space-y-2">
+                    <label for="pact-goals" class="block text-lg font-semibold text-gray-700">
+                         PACT Goals Before Next Session:
+                    </label>
+                    <textarea
+                        id="pact-goals"
+                        name="pact-goals"
+                        rows="4"
+                        placeholder="Purposeful (lines w/ plan), Achievable (realistic process), Challenging (push comfort zone), Trackable (measurable)..."
+                        class="w-full p-3 rounded-lg styled-input text-gray-700 resize-none"
+                    ></textarea>
+                </div>
+                <div class="space-y-2">
+                    <label for="recommended-resources" class="block text-lg font-semibold text-gray-700">
+                         Recommended Resources/Practice:
+                    </label>
+                    <textarea
+                        id="recommended-resources"
+                        name="recommended-resources"
+                        rows="3"
+                        placeholder="Specific question banks, mock tests, articles, videos..."
+                        class="w-full p-3 rounded-lg styled-input text-gray-700 resize-none"
+                    ></textarea>
+                </div>
+                 <div class="space-y-2">
+                    <label for="next-session-focus" class="block text-lg font-semibold text-gray-700">
+                         Focus for Next Session:
+                    </label>
+                    <input
+                        type="text"
+                        id="next-session-focus"
+                        name="next-session-focus"
+                        placeholder="Preliminary topic agreed upon..."
+                        class="w-full p-3 rounded-lg styled-input text-gray-700"
+                    />
+                </div>
+            </div> <div class="space-y-6">
+                <h2 class="section-heading">5. Session Summary & Feedback</h2>
+                <div class="space-y-2">
+                    <label for="tutor-observations" class="block text-lg font-semibold text-gray-700">
+                        Tutor's Key Observations & Encouragement:
+                    </label>
+                    <textarea
+                        id="tutor-observations"
+                        name="tutor-observations"
+                        rows="3"
+                        placeholder="Brief positive reinforcement and constructive feedback..."
+                        class="w-full p-3 rounded-lg styled-input text-gray-700 resize-none"
+                    ></textarea>
+                </div>
+                <div class="space-y-2">
+                    <label for="student-thoughts" class="block text-lg font-semibold text-gray-700">
+                        Student's Final Thoughts/Questions:
+                    </label>
+                    <textarea
+                        id="student-thoughts"
+                        name="student-thoughts"
+                        rows="3"
+                        placeholder="Any lingering points or reflections..."
+                        class="w-full p-3 rounded-lg styled-input text-gray-700 resize-none"
+                    ></textarea>
+                </div>
+            </div> <div class="space-y-6">
+                <h2 class="section-heading">6. Student Feedback</h2>
+                <div class="space-y-2">
+                    <label class="block text-lg font-semibold text-gray-700 mb-2">
+                        Session Quality & Usefulness Rating (1=Low, 5=High):
+                    </label>
+                    <div class="flex items-center space-x-4">
+                        <label class="flex items-center text-gray-700"><input type="radio" name="session-rating" value="1" class="styled-radio"> 1</label>
+                        <label class="flex items-center text-gray-700"><input type="radio" name="session-rating" value="2" class="styled-radio"> 2</label>
+                        <label class="flex items-center text-gray-700"><input type="radio" name="session-rating" value="3" class="styled-radio"> 3</label>
+                        <label class="flex items-center text-gray-700"><input type="radio" name="session-rating" value="4" class="styled-radio"> 4</label>
+                        <label class="flex items-center text-gray-700"><input type="radio" name="session-rating" value="5" class="styled-radio"> 5</label>
+                    </div>
+                </div>
+                <div class="space-y-2">
+                    <label for="improvement-suggestions" class="block text-lg font-semibold text-gray-700">
+                        Suggestions for Improvement (for Tutor):
+                    </label>
+                    <textarea
+                        id="improvement-suggestions"
+                        name="improvement-suggestions"
+                        rows="4"
+                        placeholder="Any suggestions on how the tutor can improve future sessions..."
+                        class="w-full p-3 rounded-lg styled-input text-gray-700 resize-none"
+                    ></textarea>
+                </div>
+            </div> </div> </div> <script>
         /**
          * Generates and downloads a PDF of the worksheet content.
          */
