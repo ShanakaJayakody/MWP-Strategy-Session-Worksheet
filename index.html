@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MWP UCAT Strategy Session Plan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+        /* Custom styles */
+        body {
+            /* Apply a subtle gradient background */
+            background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+            /* Fallback background */
+            background-color: #e0c3fc;
+            font-family: 'Inter', sans-serif; /* Modern font */
+        }
+        /* Apply a subtle frosted glass effect to cards */
+        .glassmorphism-card {
+            background: rgba(255, 255, 255, 0.65); /* Slightly increased opacity */
+            backdrop-filter: blur(12px); /* Slightly increased blur */
+            -webkit-backdrop-filter: blur(12px); /* Safari support */
+            border: 1px solid rgba(255, 255, 255, 0.25); /* Slightly stronger border */
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2); /* Soft shadow */
+            position: relative; /* Needed for absolute positioning of the button */
+        }
+        /* Style for input/textarea/select */
+        .styled-input {
+            background: rgba(255, 255, 255, 0.85); /* Slightly more opaque background */
+            border: 1px solid rgba(200, 200, 200, 0.4); /* Adjusted border color */
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            appearance: none; /* Remove default dropdown arrow */
+            -webkit-appearance: none;
+            -moz-appearance: none;
+        }
+        .styled-input:focus {
+            outline: none;
+            border-color: rgba(101, 91, 214, 0.7); /* Highlight color on focus */
+            box-shadow: 0 0 0 3px rgba(101, 91, 214, 0.2); /* Subtle focus ring */
+        }
+        /* Custom dropdown arrow */
+        .select-wrapper {
+            position: relative;
+            width: 100%; /* Ensure wrapper takes full width */
+        }
+        .select-wrapper::after {
+            content: '▼'; /* Down arrow character */
+            font-size: 0.8rem;
+            color: #6b7280; /* Gray color for arrow */
+            position: absolute;
+            right: 1rem; /* Position arrow on the right */
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none; /* Allow clicks to pass through to the select */
+        }
+        /* Add Inter font from Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+        /* Style for the download button to avoid being included in PDF */
+        @media print {
+          .no-print {
+            display: none !important;
+          }
+        }
+        .no-print {
+             /* Styles for screen */
+        }
+
+    </style>
+</head>
+<body class="min-h-screen p-4 sm:p-8 flex items-center justify-center">
+
+    <div id="worksheet-content" class="w-full max-w-3xl mx-auto glassmorphism-card rounded-2xl p-6 sm:p-10">
+
+        <button
+            onclick="downloadPDF()"
+            class="no-print absolute top-4 right-4 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg shadow-md transition duration-300 ease-in-out flex items-center space-x-2"
+            title="Download as PDF"
+        >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+            <span class="hidden sm:inline">Download PDF</span> </button>
+
+
+        <div class="flex justify-center mb-6 pt-8 sm:pt-0"> <img
+                src="https://media-hosting.imagekit.io/2069d58cc8a34f6d/MWP%20Color%20no%20background.png?Expires=1839560338&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=xLbgCBhORdSqrxr5gAsf783Na8g-Cco4aMlK1ZkeliDDl5ONmI4iCeUg-MM~bbjr5psfZu6cIxoPvKEK5PWso900V2unSHup~YdQoXFTIxxTtlmnCjQuXvMzlrq~SUi1AWtY8L41gmRFCFwq1Cc-pGFrjeb6eudcEsgCIjGjSokHmNEKLwvCXNzAcQyhRkbqccXTAJNUF8nozXJOWy6l0XnLrYju~9Nn2kV~bYIfRlvy4VxRpgPSdCvKA4UTV~jkBW5DYXlnsX219b0npPyqHQDFZvIBzTjLToDhzuLYPD7yPAwjAlYfTcdfymc~54q6D-RkGt-YZvnLb8TJrBb18A__"
+                alt="MWP Logo"
+                class="h-16 w-auto"  /* Adjust height as needed */
+                onerror="this.style.display='none'; console.error('Logo failed to load')" /* Hide if image fails to load */
+            >
+        </div>
+
+        <h1 class="text-2xl sm:text-3xl font-bold text-center mb-8 text-gray-800">
+            MWP UCAT Strategy Session Plan
+        </h1>
+
+        <div class="space-y-8">
+
+            <div class="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0">
+                <div class="space-y-2 sm:w-1/2">
+                    <label for="student-name" class="block text-lg font-semibold text-gray-700">
+                        Name:
+                    </label>
+                    <input
+                        type="text"
+                        id="student-name"
+                        name="student-name"
+                        placeholder="Enter student's name..."
+                        class="w-full p-3 rounded-lg styled-input text-gray-700"
+                    />
+                </div>
+                <div class="space-y-2 sm:w-1/2">
+                    <label for="section-focus" class="block text-lg font-semibold text-gray-700">
+                        Section Focus:
+                    </label>
+                    <div class="select-wrapper">
+                        <select
+                            id="section-focus"
+                            name="section-focus"
+                            class="w-full p-3 rounded-lg styled-input text-gray-700 bg-white"
+                        >
+                            <option value="" disabled selected>Select a section...</option>
+                            <option value="VR">VR (Verbal Reasoning)</option>
+                            <option value="DM">DM (Decision Making)</option>
+                            <option value="QR">QR (Quantitative Reasoning)</option>
+                            <option value="SJT">SJT (Situational Judgement)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0">
+                <div class="space-y-2 sm:w-1/2">
+                    <label for="current-score" class="block text-lg font-semibold text-gray-700">
+                        Current Score:
+                    </label>
+                    <input
+                        type="text"
+                        id="current-score"
+                        name="current-score"
+                        placeholder="Enter current score..."
+                        class="w-full p-3 rounded-lg styled-input text-gray-700"
+                    />
+                </div>
+                <div class="space-y-2 sm:w-1/2">
+                    <label for="target-score" class="block text-lg font-semibold text-gray-700">
+                        Target Score:
+                    </label>
+                    <input
+                        type="text"
+                        id="target-score"
+                        name="target-score"
+                        placeholder="Enter target score..."
+                        class="w-full p-3 rounded-lg styled-input text-gray-700"
+                    />
+                </div>
+            </div>
+
+            <div class="space-y-2">
+                <label for="growth-areas" class="block text-lg font-semibold text-gray-700">
+                    Specific Growth Areas:
+                </label>
+                <textarea
+                    id="growth-areas"
+                    name="growth-areas"
+                    rows="4"
+                    placeholder="Identify areas needing focus within the selected section..."
+                    class="w-full p-3 rounded-lg styled-input text-gray-700 resize-none"
+                ></textarea>
+            </div>
+
+            <div class="space-y-2">
+                <label for="logic-understanding" class="block text-lg font-semibold text-gray-700">
+                    Understanding Logic For:
+                </label>
+                <textarea
+                    id="logic-understanding"
+                    name="logic-understanding"
+                    rows="4"
+                    placeholder="Detail specific logic types or question formats to deepen understanding..."
+                    class="w-full p-3 rounded-lg styled-input text-gray-700 resize-none"
+                ></textarea>
+            </div>
+
+            <div class="space-y-2">
+                <label for="plan-forward" class="block text-lg font-semibold text-gray-700">
+                    Plan Moving Forwards:
+                </label>
+                <textarea
+                    id="plan-forward"
+                    name="plan-forward"
+                    rows="5"
+                    placeholder="Outline concrete steps, practice drills, resources, and timelines..."
+                    class="w-full p-3 rounded-lg styled-input text-gray-700 resize-none"
+                ></textarea>
+            </div>
+
+            <div class="space-y-2">
+                <label for="success-definition" class="block text-lg font-semibold text-gray-700">
+                    What Success Looks Like:
+                </label>
+                <textarea
+                    id="success-definition"
+                    name="success-definition"
+                    rows="3"
+                    placeholder="Define the target score, performance characteristics, and overall feeling of mastery..."
+                    class="w-full p-3 rounded-lg styled-input text-gray-700 resize-none"
+                ></textarea>
+            </div>
+
+        </div> </div> <script>
+        /**
+         * Generates and downloads a PDF of the worksheet content.
+         */
+        function downloadPDF() {
+            // Select the element that contains the worksheet content
+            const element = document.getElementById('worksheet-content');
+
+            // Get the student's name to use in the filename, default to 'worksheet'
+            const studentNameInput = document.getElementById('student-name');
+            const studentName = studentNameInput && studentNameInput.value.trim() ? studentNameInput.value.trim() : 'UCAT Plan';
+            const filename = `${studentName.replace(/[^a-z0-9]/gi, '_').toLowerCase()}_strategy_plan.pdf`;
+
+            // Configure html2pdf options
+            const opt = {
+              margin:       [0.5, 0.5, 0.5, 0.5], // Margins in inches [top, left, bottom, right]
+              filename:     filename,
+              image:        { type: 'jpeg', quality: 0.98 }, // Image settings
+              html2canvas:  { scale: 2, useCORS: true, logging: false }, // html2canvas settings (increase scale for better resolution)
+              jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' } // jsPDF settings
+            };
+
+            // Use html2pdf to generate the PDF from the element
+            console.log("Generating PDF..."); // Log start
+            html2pdf().set(opt).from(element).save().then(() => {
+                console.log("PDF generated successfully."); // Log success
+            }).catch(err => {
+                console.error("Error generating PDF:", err); // Log errors
+            });
+        }
+    </script>
+
+</body>
+</html>
